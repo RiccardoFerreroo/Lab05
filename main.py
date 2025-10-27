@@ -95,7 +95,7 @@ def main(page: ft.Page):
         try:
             anno =int(anno)
             if anno < 0:
-                alert.show_alert(f" ❌negative year ({anno}), not reasonable :(")
+                alert.show_alert(f" ❌ anno negativo ({anno}), non possibile :(")
 
         except Exception  as t:
             alert.show_alert(f"❌ formato anno non valido :( \n {t}")
