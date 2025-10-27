@@ -38,7 +38,7 @@ def main(page: ft.Page):
     lista_auto = ft.ListView(expand=True, spacing=5, padding=10, auto_scroll=True)
 
     # Tutti i TextField per le info necessarie per aggiungere una nuova automobile (marca, modello, anno, contatore posti)
-    txt_automobili_titolo =ft.Text(value="Aggiungi automobili:", size= 36, weight =ft.FontWeight.BOLD)
+    txt_automobili_titolo =ft.Text(value="Aggiungi Automobili:", size= 36, weight =ft.FontWeight.BOLD)
 
     input_marca = ft.TextField( value = "",  label = "marca" )
     input_modello = ft.TextField(value = "", label = "modello" )
@@ -47,7 +47,6 @@ def main(page: ft.Page):
     txt_num_posti= ft.Text(str(num_posti), size =20, weight=ft.FontWeight.BOLD)
 
 
-    # TODO
      # --- FUNZIONI APP ---
     def aumenta_posti(e):
         nonlocal num_posti
@@ -105,9 +104,8 @@ def main(page: ft.Page):
     # --- EVENTI ---
     toggle_cambia_tema = ft.Switch(label="Tema scuro", value=True, on_change=cambia_tema)
     pulsante_conferma_responsabile = ft.ElevatedButton("Conferma", on_click=conferma_responsabile)
-    pulsante_conferma_automobile = ft.ElevatedButton("Aggiungi Auto", on_click=aggiungi_auto)
+    pulsante_conferma_automobile = ft.ElevatedButton("Aggiungi automobile", on_click=aggiungi_auto)
     # Bottoni per la gestione dell'inserimento di una nuova auto
-
 
     # --- LAYOUT ---
     page.add(
