@@ -49,14 +49,14 @@ def main(page: ft.Page):
 
     # TODO
      # --- FUNZIONI APP ---
-    def aumenta_posti(num_posti):
-
+    def aumenta_posti(e):
+        nonlocal num_posti
         num_posti += 1
         txt_num_posti.value = str(num_posti)
         page.update()
 
-    def diminuisci_posti(num_posti):
-
+    def diminuisci_posti(e):
+        nonlocal num_posti
         if num_posti > 1:  # minimo 1 posto
             num_posti -= 1
             txt_num_posti.value = str(num_posti)
@@ -64,9 +64,9 @@ def main(page: ft.Page):
 
     row_posti = ft.Row(
         controls=[
-            ft.IconButton(icon ="-", on_click=diminuisci_posti),
+            ft.IconButton(icon ="remove", icon_color="red", on_click=diminuisci_posti),
             txt_num_posti,
-            ft.IconButton(icon ="+", on_click=aumenta_posti),
+            ft.IconButton(icon ="add", icon_color="green", on_click=aumenta_posti),
         ],
         alignment=ft.MainAxisAlignment.CENTER
     )
@@ -126,7 +126,7 @@ def main(page: ft.Page):
         ft.Divider(),
         # Sezione 3
         txt_automobili_titolo,
-        ft.Row(spacing=50, controls=[input_marca, input_modello, input_anno, txt_num_posti ]),pulsante_conferma_automobile,
+        ft.Row(spacing=2, controls=[input_marca, input_modello, input_anno, row_posti]),pulsante_conferma_automobile,
 
         # TODO
 
