@@ -1,4 +1,6 @@
 import flet as ft
+from flet.core.alignment import center
+
 from alert import AlertManager
 from autonoleggio import Autonoleggio
 
@@ -36,7 +38,12 @@ def main(page: ft.Page):
     lista_auto = ft.ListView(expand=True, spacing=5, padding=10, auto_scroll=True)
 
     # Tutti i TextField per le info necessarie per aggiungere una nuova automobile (marca, modello, anno, contatore posti)
-    ft.Text(value="Aggiungi automobili:", size= 36, weight =ft.FontWeight.BOLD)
+    txt_automobili_titolo =ft.Text(value="Aggiungi automobili:", size= 36, weight =ft.FontWeight.BOLD)
+
+    input_marca = ft.TextField( value = "",  label = "marca" )
+    input_modello = ft.TextField(value = "", label = "modello" )
+    input_anno = ft.TextField(value = "", label = "anno" )
+
 
     # TODO
 
@@ -60,12 +67,23 @@ def main(page: ft.Page):
         page.update()
 
     # Handlers per la gestione dei bottoni utili all'inserimento di una nuova auto
+    def aggiungi_auto(e):
+        marca = input_marca.value
+        modello = input_modello.value
+        anno = input_anno.value
+        autonoleggio.aggiungi_automobile(marca, modello, anno)
+        aggiorna_lista_auto()
+        input_marca.value=""
+        input_anno.value=""
+        input_modello.value=""
+        page.update()
+
     # TODO
 
     # --- EVENTI ---
     toggle_cambia_tema = ft.Switch(label="Tema scuro", value=True, on_change=cambia_tema)
     pulsante_conferma_responsabile = ft.ElevatedButton("Conferma", on_click=conferma_responsabile)
-
+    pulsante_conferma_automobile = ft.ElevatedButton("Aggiungi Auto", on_click=aggiungi_auto)
     # Bottoni per la gestione dell'inserimento di una nuova auto
     # TODO
 
@@ -83,8 +101,11 @@ def main(page: ft.Page):
         ft.Row(spacing=200,
                controls=[input_responsabile, pulsante_conferma_responsabile],
                alignment=ft.MainAxisAlignment.CENTER),
-
+        ft.Divider(),
         # Sezione 3
+        txt_automobili_titolo,
+        ft.Row(spacing=50, controls=[input_marca, input_modello, input_anno, txt_num_posti ]),pulsante_conferma_automobile
+
         # TODO
 
         # Sezione 4
