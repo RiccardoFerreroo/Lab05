@@ -107,7 +107,7 @@ def main(page: ft.Page):
     pulsante_conferma_responsabile = ft.ElevatedButton("Conferma", on_click=conferma_responsabile)
     pulsante_conferma_automobile = ft.ElevatedButton("Aggiungi Auto", on_click=aggiungi_auto)
     # Bottoni per la gestione dell'inserimento di una nuova auto
-    # TODO
+
 
     # --- LAYOUT ---
     page.add(
@@ -128,7 +128,7 @@ def main(page: ft.Page):
         txt_automobili_titolo,
         ft.Row(spacing=2, controls=[input_marca, input_modello, input_anno, row_posti]),pulsante_conferma_automobile,
 
-        # TODO
+
 
         # Sezione 4
         ft.Divider(),
