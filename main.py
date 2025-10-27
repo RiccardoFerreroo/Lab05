@@ -43,11 +43,33 @@ def main(page: ft.Page):
     input_marca = ft.TextField( value = "",  label = "marca" )
     input_modello = ft.TextField(value = "", label = "modello" )
     input_anno = ft.TextField(value = "", label = "anno" )
+    num_posti = 4
+    txt_num_posti= ft.Text(str(num_posti), size =20, weight=ft.FontWeight.BOLD)
 
 
     # TODO
+     # --- FUNZIONI APP ---
+    def aumenta_posti(num_posti):
 
-    # --- FUNZIONI APP ---
+        num_posti += 1
+        txt_num_posti.value = str(num_posti)
+        page.update()
+
+    def diminuisci_posti(num_posti):
+
+        if num_posti > 1:  # minimo 1 posto
+            num_posti -= 1
+            txt_num_posti.value = str(num_posti)
+            page.update()
+
+    row_posti = ft.Row(
+        controls=[
+            ft.IconButton(icon ="-", on_click=diminuisci_posti),
+            txt_num_posti,
+            ft.IconButton(icon ="+", on_click=aumenta_posti),
+        ],
+        alignment=ft.MainAxisAlignment.CENTER
+    )
     def aggiorna_lista_auto():
         lista_auto.controls.clear()
         for auto in autonoleggio.automobili_ordinate_per_marca():
@@ -71,7 +93,7 @@ def main(page: ft.Page):
         marca = input_marca.value
         modello = input_modello.value
         anno = input_anno.value
-        autonoleggio.aggiungi_automobile(marca, modello, anno)
+        autonoleggio.aggiungi_automobile(marca, modello, anno, num_posti)
         aggiorna_lista_auto()
         input_marca.value=""
         input_anno.value=""
@@ -104,7 +126,7 @@ def main(page: ft.Page):
         ft.Divider(),
         # Sezione 3
         txt_automobili_titolo,
-        ft.Row(spacing=50, controls=[input_marca, input_modello, input_anno, txt_num_posti ]),pulsante_conferma_automobile
+        ft.Row(spacing=50, controls=[input_marca, input_modello, input_anno, txt_num_posti ]),pulsante_conferma_automobile,
 
         # TODO
 
