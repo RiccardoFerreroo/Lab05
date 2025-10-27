@@ -90,12 +90,23 @@ def main(page: ft.Page):
     # Handlers per la gestione dei bottoni utili all'inserimento di una nuova auto
     def aggiungi_auto(e):
         marca = input_marca.value
+
+        if marca.strip() == "":
+            alert.show_alert(f"❌ inserire dati sul campo Marca..")
+            return
         modello = input_modello.value
+        if modello.strip() == "":
+            alert.show_alert(f"❌ inserire dati sul campo Modello..")
+            return
         anno = input_anno.value
+        if anno.strip() == "":
+            alert.show_alert(f"❌ inserire dati sul campo Anno..")
+            return
         try:
             anno =int(anno)
-            if anno < 0:
-                alert.show_alert(f" ❌ anno negativo ({anno}), non possibile :(")
+            if anno < 1800 or anno > 2026:
+                alert.show_alert(f" ❌ anno  ({anno}), non possibile/ plausibile :(")
+                return
 
         except Exception  as t:
             alert.show_alert(f"❌ formato anno non valido :( \n {t}")
