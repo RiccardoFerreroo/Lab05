@@ -92,6 +92,14 @@ def main(page: ft.Page):
         marca = input_marca.value
         modello = input_modello.value
         anno = input_anno.value
+        try:
+            anno =int(anno)
+        except Exception  as t:
+            alert.show_alert(f"❌ formato anno non valido :( \n {t}")
+
+        if anno < 0:
+            alert.show_alert(f" ❌negative year ({anno}), not reasonable :(")
+
         autonoleggio.aggiungi_automobile(marca, modello, anno, num_posti)
         aggiorna_lista_auto()
         input_marca.value=""
@@ -99,7 +107,7 @@ def main(page: ft.Page):
         input_modello.value=""
         page.update()
 
-    # TODO
+
 
     # --- EVENTI ---
     toggle_cambia_tema = ft.Switch(label="Tema scuro", value=True, on_change=cambia_tema)
