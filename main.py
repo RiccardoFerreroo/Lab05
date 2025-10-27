@@ -36,6 +36,8 @@ def main(page: ft.Page):
     lista_auto = ft.ListView(expand=True, spacing=5, padding=10, auto_scroll=True)
 
     # Tutti i TextField per le info necessarie per aggiungere una nuova automobile (marca, modello, anno, contatore posti)
+    ft.Text(value="Aggiungi automobili:", size= 36, weight =ft.FontWeight.BOLD)
+
     # TODO
 
     # --- FUNZIONI APP ---
