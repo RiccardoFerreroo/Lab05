@@ -94,11 +94,12 @@ def main(page: ft.Page):
         anno = input_anno.value
         try:
             anno =int(anno)
+            if anno < 0:
+                alert.show_alert(f" ❌negative year ({anno}), not reasonable :(")
+
         except Exception  as t:
             alert.show_alert(f"❌ formato anno non valido :( \n {t}")
 
-        if anno < 0:
-            alert.show_alert(f" ❌negative year ({anno}), not reasonable :(")
 
         autonoleggio.aggiungi_automobile(marca, modello, anno, num_posti)
         aggiorna_lista_auto()
